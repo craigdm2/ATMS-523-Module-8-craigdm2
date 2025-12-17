@@ -19,18 +19,18 @@ The catch is, there's no nicely labeled datasets of Chinook events. It's clear t
 
 ### Variables Used
 
-`temp` - Air temperature - C 
-`rel_hum` - Relative humidity - % 
-`wind_spd` - Wind speed - km/h 
-`wind_dir` - Wind direction - tens of degrees (0–36) 
-`pressure` - Station pressure - hPa 
+temp - Air temperature - C 
+rel_hum - Relative humidity - % 
+wind_spd - Wind speed - km/h 
+wind_dir - Wind direction - tens of degrees (0–36) 
+pressure - Station pressure - hPa 
 
 ### Engineered Features
 
-`temp_delta_6h` - 6-hour temperature change - Looking for: Large positive (+10–20°C) 
-`pressure_delta_6h` - 6-hour pressure change - Looking for: Negative (pressure drop) 
-`humidity_delta_6h` - 6-hour humidity change - Looking for: Large negative (rapid drying) 
-`wind_sin`, `wind_cos` - Wind components - Looking for: Westerly winds (sin ~ 0, cos < 0) 
+temp_delta_6h - 6-hour temperature change - Looking for: Large positive (+10–20°C) 
+pressure_delta_6h - 6-hour pressure change - Looking for: Negative (pressure drop) 
+humidity_delta_6h - 6-hour humidity change - Looking for: Large negative (rapid drying) 
+wind_sin, wind_cos - Wind components - Looking for: Westerly winds (sin ~ 0, cos < 0) 
 
 ## Methodology
 
