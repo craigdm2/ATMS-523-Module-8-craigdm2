@@ -20,17 +20,25 @@ The catch is, there's no nicely labeled datasets of Chinook events. It's clear t
 ### Variables Used
 
 temp - Air temperature - C 
+
 rel_hum - Relative humidity - % 
+
 wind_spd - Wind speed - km/h 
+
 wind_dir - Wind direction - tens of degrees (0–36) 
+
 pressure - Station pressure - hPa 
 
 ### Engineered Features
 
 temp_delta_6h - 6-hour temperature change - Looking for: Large positive (+10–20°C) 
+
 pressure_delta_6h - 6-hour pressure change - Looking for: Negative (pressure drop) 
+
 humidity_delta_6h - 6-hour humidity change - Looking for: Large negative (rapid drying) 
+
 wind_sin, wind_cos - Wind components - Looking for: Westerly winds (sin ~ 0, cos < 0) 
+
 
 ## Methodology
 
@@ -44,26 +52,38 @@ For this project I used a two-stage unsupervised learning approach to isolate ch
 
 Next I used k-means clustering with k=3 on the isolation forest anomalies to try and differentiate between Chinooks and other events. This worked very well! Looking at the characteristics of the centroids for each event, there was a clear differentiation between chinooks and other events (roughly northerly cold air events, and winter storms/blizzards).
 
-### Trend Determination
+### Determining Trends
 
-Next I classified any day with >=3 or more hours which were tagged to the chinook cluster as a chinook day. I used linear regression and then a non-parametric Mann-Kendall test to confirm whther there was a significant trend. 
+Next I classified any day with 3 or more hours which were tagged to the chinook cluster as a chinook day. I used linear regression and then a non-parametric Mann-Kendall test to confirm whther there was a significant trend. 
 
 ## Results
 
 ### Isolated Forest
 
 temp_delta_6h
+
     -Anomaly: +3.64
+    
 pressure_delta_6h
+
     -Anomaly: +0.09
+    
 humidity_delta_6h
+
     -Anomaly: -10.29
+    
 rel_hum
+
     -Anomaly: +51.43
+    
 wind_spd
+
     -Anomaly: +28.19
+    
 wind_dir
-    -Anomaly: 321.9°
+
+    -Anomaly: 321.9
+
 
 This clearly isn't picking out a chinkook. Moderate warming, increased pressure (we're looking for a decrease), a slight drop in humidity but relatively high average humidity.  Moderate northerly winds. 
 
